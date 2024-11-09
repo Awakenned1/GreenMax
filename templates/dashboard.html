@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<p>User: {{ user_data.name }}</p>
+<p>Email: {{ user_data.email }}</p>
+<p>Plan: {{ user_data.plan }}</p>
+<p>Notifications: {{ user_data.notifications }}</p>
+
+<h3>Energy Data</h3>
+<ul>
+    <li>Daily Usage: {{ energy_data.daily.value }} {{ energy_data.daily.unit }}</li>
+    <li>Weekly Usage: {{ energy_data.weekly.value }} {{ energy_data.weekly.unit }}</li>
+    <li>Monthly Usage: {{ energy_data.monthly.value }} {{ energy_data.monthly.unit }}</li>
+    <li>Current Usage: {{ energy_data.currentUsage }}</li>
+    <li>Peak Time: {{ energy_data.peakTime }}</li>
+    <li>Recommendations: {{ energy_data.recommendations | join(', ') }}</li>
+</ul>
+
+<h3>Consumption Data</h3>
+<ul>
+    {% for data in consumption_data %}
+    <li>{{ data.time }}: {{ data.kwh }} kWh</li>
+    {% endfor %}
+</ul>
+{% endblock %}
