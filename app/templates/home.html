@@ -1,10 +1,22 @@
 {% extends "base.html" %}
 
+{% block title %}GreenMax - Smart Energy Monitoring{% endblock %}
+
 {% block content %}
-<div class="intro">
-    <h1>Welcome to GreenMax</h1>
-    <p>Your smart energy management solution.</p>
-    <p>Track your energy usage, optimize costs, and manage devices efficiently.</p>
-    <a href="{{ url_for('main.index') }}" class="btn">Get Started</a>
+<div class="home-container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to GreenMax</h1>
+            <p>Smart energy monitoring for a sustainable future</p>
+            {% if 'user' not in session %}
+                <div class="cta-buttons">
+                    <a href="{{ url_for('auth.login') }}" class="btn-primary">Login</a>
+                    <a href="{{ url_for('auth.register') }}" class="btn-secondary">Register</a>
+                </div>
+            {% else %}
+                <a href="{{ url_for('main.dashboard') }}" class="btn-primary">Go to Dashboard</a>
+            {% endif %}
+        </div>
+    </section>
 </div>
 {% endblock %}

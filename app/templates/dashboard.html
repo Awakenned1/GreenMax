@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}GreenMax - Energy Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <!-- Real-time Overview -->
+    <section class="dashboard-section">
+        <h2>Real-time Overview</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">Current Power</span>
+                    <span class="metric-icon">⚡</span>
+                </div>
+                <div class="metric-value">{{ real_time.current_power|default('0.00') }} kW</div>
+                <div class="metric-status {{ real_time.status|default('normal')|lower }}">
+                    {{ real_time.status|default('Normal')|title }}
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">Peak Usage</span>
+                    <span class="metric-icon">📊</span>
+                </div>
+                <div class="metric-value">{{ real_time.peak_value|default('0.00') }} kW</div>
+                <div class="metric-subtitle">at {{ real_time.peak_time|default('--:--') }}</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">Daily Usage</span>
+                    <span class="metric-icon">📅</span>
+                </div>
+                <div class="metric-value">{{ daily_total|default('0.00') }} kWh</div>
+                <div class="metric-subtitle">Updated {{ real_time.timestamp|default('now') }}</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consumption Chart -->
+    <section class="dashboard-section">
+        <div class="section-header">
+            <h2>Energy Consumption</h2>
+            <select id="timeRange" class="time-selector">
+                <option value="day">24 Hours</option>
+                <option value="week">7 Days</option>
+                <option value="month">30 Days</option>
+            </select>
+        </div>
+        <div class="chart-container">
+            <canvas id="energyChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section class="dashboard-section">
+        <h2>Smart Recommendations</h2>
+        <div class="recommendations-list">
+            {% for tip in recommendations|default([
+                "Monitor your energy usage patterns",
+                "Consider upgrading to energy-efficient appliances",
+                "Set up automated controls for optimal usage"
+            ]) %}
+            <div class="recommendation-item">
+                <span class="recommendation-icon">💡</span>
+                <span class="recommendation-text">{{ tip }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
