@@ -7,7 +7,6 @@ auth_bp = Blueprint('auth', __name__)
 firebase = pyrebase.initialize_app(Config.FIREBASE_CONFIG)
 auth = firebase.auth()
 
-
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -15,11 +14,16 @@ def login():
         password = request.form.get('password')
         try:
             user = auth.sign_in_with_email_and_password(email, password)
-            session['user'] = {'email': email}
+            session['user'] = {'email': email}  # Set session
             return redirect(url_for('main.index'))
         except:
             flash('Invalid credentials')
     return render_template('login.html')
+
+@auth_bp.route('/logout')
+def logout():
+    session.pop('user', None)  # Clear session
+    return redirect(url_for('main.home'))
 
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
@@ -36,7 +40,3 @@ def register():
     return render_template('register.html')
 
 
-@auth_bp.route('/logout')
-def logout():
-    session.pop('user', None)
-    return redirect(url_for('main.index'))
