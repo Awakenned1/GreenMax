@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <!-- Energy Overview Section -->
+    <section class="dashboard-section">
+        <h2 class="section-title">Energy Overview</h2>
+        <div class="consumption-grid">
+            <div class="consumption-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <h3>Daily Usage</h3>
+                <p class="consumption-value">{{ daily_consumption|default('0') }} kWh</p>
+                <p class="consumption-trend {% if daily_trend > 0 %}trend-up{% else %}trend-down{% endif %}">
+                    {{ daily_trend|default('0') }}% vs yesterday
+                </p>
+            </div>
+
+            <div class="consumption-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h3>Weekly Usage</h3>
+                <p class="consumption-value">{{ weekly_consumption|default('0') }} kWh</p>
+                <p class="consumption-trend {% if weekly_trend > 0 %}trend-up{% else %}trend-down{% endif %}">
+                    {{ weekly_trend|default('0') }}% vs last week
+                </p>
+            </div>
+
+            <div class="consumption-card">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                </div>
+                <h3>Monthly Usage</h3>
+                <p class="consumption-value">{{ monthly_consumption|default('0') }} kWh</p>
+                <p class="consumption-trend {% if monthly_trend > 0 %}trend-up{% else %}trend-down{% endif %}">
+                    {{ monthly_trend|default('0') }}% vs last month
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-time Tracking Section -->
+    <section class="dashboard-section">
+        <h2 class="section-title">Real-time Tracking</h2>
+        <div class="tracking-grid">
+            <div class="tracking-card">
+                <h3>Current Power Draw</h3>
+                <p class="tracking-value">{{ current_power|default('0') }} W</p>
+                <div class="power-indicator" data-value="{{ current_power|default('0') }}"></div>
+            </div>
+            <div class="tracking-card">
+                <h3>Peak Usage Time</h3>
+                <p class="tracking-value">{{ peak_time|default('No data') }}</p>
+                <p class="tracking-subtitle">Today's peak: {{ peak_value|default('0') }} kWh</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy Graph Section -->
+    <section class="dashboard-section">
+        <h2 class="section-title">Energy Consumption Trends</h2>
+        <div class="energy-graph">
+            <div class="graph-controls">
+                <select id="timeRange" class="graph-select">
+                    <option value="day">24 Hours</option>
+                    <option value="week">7 Days</option>
+                    <option value="month">30 Days</option>
+                </select>
+            </div>
+            <canvas id="energyChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="dashboard-section">
+        <h2 class="section-title">Smart Recommendations</h2>
+        <div class="recommendations-grid">
+            <div class="recommendations">
+                <h3>Energy Saving Tips</h3>
+                <ul class="tips-list">
+                    {% for tip in energy_tips %}
+                    <li class="tip-item">{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+                <button class="tips-button" id="tipsBtn">View More Tips</button>
+            </div>
+            <div class="recommendations">
+                <h3>Cost Optimization</h3>
+                <ul class="tips-list">
+                    {% for tip in cost_tips %}
+                    <li class="tip-item">{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Device Management Section -->
+    <section class="dashboard-section">
+        <h2 class="section-title">Connected Devices</h2>
+        <div class="devices-grid">
+            {% for device in devices %}
+            <div class="device-card">
+                <div class="device-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="{{ device.icon }}"/>
+                    </svg>
+                </div>
+                <h3>{{ device.name }}</h3>
+                <p class="device-status {{ device.status }}">{{ device.status }}</p>
+                <p class="device-consumption">{{ device.consumption }} kWh</p>
+                <button class="device-toggle" data-id="{{ device.id }}">
+                    {{ 'Turn Off' if device.status == 'active' else 'Turn On' }}
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+<!-- Previous content remains the same until the scripts block -->
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}" type="module"></script>
+{% endblock scripts %}
