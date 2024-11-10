@@ -1,12 +1,23 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, session, redirect, url_for
+from functools import wraps
 
 main_bp = Blueprint('main', __name__)
+
+# Login required decorator
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user' not in session:
+            return redirect(url_for('auth.login'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 @main_bp.route('/')
 def home():
     return render_template('home.html')
 
 @main_bp.route('/dashboard')
+@login_required  # Add this decorator to protect the route
 def index():
     # Mock data for the dashboard
     dashboard_data = {
@@ -72,16 +83,19 @@ def index():
     return render_template('index.html', **dashboard_data)
 
 @main_bp.route('/api/device/<device_id>')
+@login_required  # Protect API endpoints too
 def get_device_status(device_id):
     # Mock device status
     return jsonify({'status': 'on' if device_id in ['1', '2'] else 'off'})
 
 @main_bp.route('/api/device/<device_id>/toggle', methods=['POST'])
+@login_required  # Protect API endpoints
 def toggle_device(device_id):
     # Mock device toggle
     return jsonify({'success': True})
 
 @main_bp.route('/api/energy-data')
+@login_required  # Protect API endpoints
 def get_energy_data():
     # Mock energy data
     return jsonify({
