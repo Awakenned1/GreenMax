@@ -1,0 +1,35 @@
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.consumption-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.stat {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.today-usage {
+    text-align: center;
+    margin: 20px;
+}
+
+#energy-chart {
+    width: 80%;
+    height: 300px;
+}
+
+.energy-tips {
+    margin: 20px;
+}
