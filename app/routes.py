@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, render_template, session
 from .services.energy_monitor import EnergyMonitoringSystem
 from .services.auth import login_required
+from datetime import datetime
 
 main_bp = Blueprint('main', __name__)
 

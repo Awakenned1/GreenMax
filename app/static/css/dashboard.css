@@ -112,7 +112,6 @@
     margin-top: 20px;
 }
 
-/* Recommendations */
 .recommendations-list {
     display: grid;
     gap: 15px;
@@ -189,4 +188,119 @@
 @keyframes spin {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Chart Styling */
+#energyChart {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Color Scheme */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #e74c3c;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --border-color: #bdc3c7;
+}
+
+.dashboard {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.dashboard-section {
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.metric-card {
+    background-color: white;
+    border-left: 4px solid var(--primary-color);
+}
+
+.metric-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.metric-title {
+    color: var(--secondary-color);
+}
+
+.metric-icon {
+    color: var(--primary-color);
+}
+
+.metric-status.high {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.metric-status.medium {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.metric-status.normal,
+.metric-status.low {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Hover Effects */
+.dashboard-section:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Typography */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--secondary-color);
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+/* Accessibility */
+.screen-reader-text {
+    clip: rect(1 1 1 1);
+    clip-path: inset(50%);
+    clip-position: center;
+    display: block;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: white !important;
+        color: black !important;
+        font-size: 12pt;
+    }
+
+    .dashboard-section {
+        page-break-after: always;
+    }
+
+    .metric-card {
+        page-break-before: always;
+    }
 }
