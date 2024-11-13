@@ -1,7 +1,5 @@
 import tensorflow as tf
-from tensorflow import keras
-layers = keras.layers
-models = keras.models
+from tensorflow.keras import layers, models
 import os
 
 

@@ -7,11 +7,9 @@ from wtforms.validators import DataRequired, Length
 
 auth_bp = Blueprint('auth', __name__)
 
-
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=4, max=20)])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
-
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -25,13 +23,13 @@ def login():
 
         if verify_credentials(username, password):
             session['user'] = username
+            session['user_id'] = 1  # Add user_id to session
             flash('Successfully logged in!', 'success')
             return redirect(url_for('main.dashboard'))
         else:
             flash('Invalid username or password', 'error')
 
     return render_template('login.html', form=form)
-
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -51,13 +49,11 @@ def register():
 
     return render_template('register.html', form=form)
 
-
 @auth_bp.route('/logout')
 def logout():
-    session.pop('user', None)
+    session.clear()
     flash('Successfully logged out!', 'success')
     return redirect(url_for('main.home'))
-
 
 def login_required(f):
     @wraps(f)
@@ -66,21 +62,15 @@ def login_required(f):
             flash('Please login first', 'error')
             return redirect(url_for('auth.login'))
         return f(*args, **kwargs)
-
     return decorated_function
-
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
-
 def verify_credentials(username, password):
     # Implement actual verification logic here
-    # For testing purposes:
     return True
-
 
 def create_user(username, hashed_password):
     # Implement user creation logic here
-    # For testing purposes:
     return True

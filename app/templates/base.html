@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}GreenMax{% endblock %}</title>
-  
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block styles %}{% endblock %}
+
 </head>
 <body>
     <header class="header">
         <div class="logo">
             <div class="logo-circle"></div>
-            <span class="logo-text">GreenMax</span>
+            <span>GreenMax</span>
         </div>
         <nav>
+            <a href="{{ url_for('main.home') }}">Home</a>
             {% if 'user' in session %}
                 <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
                 <a href="{{ url_for('auth.logout') }}">Logout</a>
@@ -25,19 +32,18 @@
         </nav>
     </header>
 
-    <main>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
-        {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    {% block scripts %}{% endblock %}
+    <footer class="footer">
+        <p>&copy; 2024 GreenMax. All rights reserved.</p>
+    </footer>
 </body>
 </html>

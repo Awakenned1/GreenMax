@@ -1,90 +1,233 @@
+import random
 from datetime import datetime, timedelta
+import google.generativeai as genai
+import firebase_admin
+from firebase_admin import credentials, db
+import os
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class EnergyMonitoringSystem:
     def __init__(self):
-        self.peak_threshold = 4.0
-
-    def get_dashboard_data(self, user_id, time_range='day'):
-        """Generate dashboard data"""
+        if not firebase_admin._apps:
+            cred = credentials.Certificate("Service-key.json")
+            firebase_admin.initialize_app(cred, {
+                'databaseURL': os.getenv('FIREBASE_DATABASE_URL')
+            })
+        
         try:
-            # Generate current data
-            current_data = self._generate_current_data()
-
-            # Generate historical data
-            historical_data = self._generate_historical_data(time_range)
-
-            # Generate recommendations
-            recommendations = self._generate_recommendations(current_data)
-
-            return {
-                'real_time': current_data,
-                'historical': historical_data,
-                'recommendations': recommendations,
-                'daily_total': round(sum(historical_data['values'][-24:]), 2)
-            }
+            genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
+            self.model = genai.GenerativeModel('gemini-pro')
         except Exception as e:
-            print(f"Error generating dashboard data: {e}")
+            print(f"Warning: Could not initialize Gemini: {e}")
+            self.model = None
+        
+        self.scaler = MinMaxScaler()
+        self.last_update = datetime.now()
+        self.peak_value = 0.0
+        self.peak_time = '--:--'
+        self.db = db
+
+    def generate_realistic_power_data(self):
+        current_hour = datetime.now().hour
+        if 0 <= current_hour < 6:
+            base_load = random.uniform(0.3, 0.8)
+        elif 6 <= current_hour < 9:
+            base_load = random.uniform(2.0, 4.0)
+        elif 9 <= current_hour < 17:
+            base_load = random.uniform(1.0, 2.5)
+        elif 17 <= current_hour < 22:
+            base_load = random.uniform(2.5, 4.5)
+        else:
+            base_load = random.uniform(0.8, 1.5)
+        
+        noise = random.uniform(-0.2, 0.2)
+        return round(max(0.1, min(5.0, base_load + noise)), 2)
+
+    def get_ai_recommendations(self, usage_data):
+        try:
+            if not self.model:
+                raise Exception("Gemini model not initialized")
+
+            prompt = f"""
+            As an energy efficiency expert, analyze this energy usage data:
+            - Current Power: {usage_data['current_power']} kW
+            - Daily Total: {usage_data['daily_total']} kWh
+            - Peak Value: {usage_data['peak_value']} kW at {usage_data['peak_time']}
+            - Status: {usage_data['status']}
+
+            Provide 3 specific, actionable recommendations to improve energy efficiency.
+            Format as a bullet-pointed list.
+            """
+
+            response = self.model.generate_content(prompt)
+            recommendations = [
+                line.strip('• ').strip() 
+                for line in response.text.split('\n') 
+                if line.strip()
+            ][:3]
+
+            return recommendations
+        except Exception as e:
+            print(f"AI recommendation error: {e}")
+            return [
+                "Monitor your energy usage patterns",
+                "Consider upgrading to energy-efficient appliances",
+                "Set up automated controls for optimal usage"
+            ]
+
+    def predict_future_usage(self, historical_data):
+        try:
+            if not historical_data:
+                return None
+
+            recent_values = [entry['power'] for entry in historical_data[-24:]]
+            if not recent_values:
+                return None
+
+            prediction = sum(recent_values) / len(recent_values)
+            return round(min(5.0, max(0.1, prediction)), 2)
+        except Exception as e:
+            print(f"Prediction error: {e}")
             return None
 
-    def _generate_current_data(self):
-        """Generate real-time data"""
-        current_hour = datetime.now().hour
+    def save_to_firebase(self, user_id, data):
+        try:
+            timestamp = datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+            user_ref = self.db.reference(f'users/{user_id}/energy_data')
+            
+            current_data = {
+                'timestamp': timestamp,
+                'power': data['real_time']['current_power'],
+                'status': data['real_time']['status'],
+                'peak_value': data['real_time']['peak_value'],
+                'peak_time': data['real_time']['peak_time'],
+                'daily_total': data['daily_total']
+            }
+            
+            user_ref.child('current').set(current_data)
+            user_ref.child('historical').push(current_data)
+            
+            if 'recommendations' in data:
+                user_ref.child('recommendations').set(data['recommendations'])
+            
+            return True
+        except Exception as e:
+            print(f"Firebase save error: {e}")
+            return False
 
-        # Simulate power consumption based on time of day
-        if current_hour >= 23 or current_hour < 5:
-            power = np.random.uniform(0.1, 0.8)
-            status = 'low'
-        elif 5 <= current_hour < 9:
-            power = np.random.uniform(1.0, 2.5)
-            status = 'high'
-        else:
-            power = np.random.uniform(0.5, 1.5)
-            status = 'medium'
+    def get_dashboard_data(self, user_id):
+        try:
+            # Generate current power data
+            current_power = self.generate_realistic_power_data()
+            
+            # Update peak values
+            if current_power > self.peak_value:
+                self.peak_value = current_power
+                self.peak_time = datetime.now().strftime('%H:%M')
 
-        return {
-            'current_power': round(power, 2),
-            'peak_value': round(power * 1.2, 2),
-            'peak_time': f"{current_hour:02d}:00",
-            'status': status,
-            'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        }
+            # Determine status
+            status = 'high' if current_power > 4.0 else 'low' if current_power < 1.0 else 'normal'
 
-    def _generate_historical_data(self, time_range):
-        """Generate historical data"""
-        if time_range == 'day':
-            hours = 24
-        elif time_range == 'week':
-            hours = 168
-        else:
-            hours = 24  # Default to day
+            try:
+                # Safely get historical data from Firebase
+                historical_ref = self.db.reference(f'users/{user_id}/energy_data/historical')
+                historical_data = historical_ref.get() if historical_ref else {}
+                historical_list = list(historical_data.values()) if historical_data else []
+            except Exception as firebase_error:
+                print(f"Firebase error: {firebase_error}")
+                historical_list = []
 
-        timestamps = []
-        values = []
+            # Calculate daily total
+            today = datetime.now().strftime('%Y-%m-%d')
+            today_data = [
+                entry for entry in historical_list 
+                if entry.get('timestamp', '').startswith(today)
+            ]
+            daily_total = (
+                sum(float(entry.get('power', 0)) for entry in today_data) / len(today_data)
+                if today_data else 0
+            )
 
-        current_time = datetime.now()
-        for i in range(hours):
-            past_time = current_time - timedelta(hours=i)
-            power = np.random.uniform(0.5, 3.0)
+            # Prepare data structure
+            data = {
+                'real_time': {
+                    'current_power': current_power,
+                    'peak_value': self.peak_value,
+                    'peak_time': self.peak_time,
+                    'status': status,
+                    'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                },
+                'historical': {
+                    'timestamps': [entry.get('timestamp') for entry in historical_list[-24:]],
+                    'values': [float(entry.get('power', 0)) for entry in historical_list[-24:]]
+                },
+                'daily_total': round(daily_total, 2),
+                'recommendations': [
+                    "Monitor your energy usage patterns",
+                    "Consider upgrading to energy-efficient appliances",
+                    "Set up automated controls for optimal usage"
+                ]
+            }
 
-            timestamps.append(past_time.strftime('%Y-%m-%d %H:%M'))
-            values.append(round(power, 2))
+            # Try to get AI recommendations
+            try:
+                ai_recommendations = self.get_ai_recommendations({
+                    'current_power': current_power,
+                    'daily_total': daily_total,
+                    'peak_value': self.peak_value,
+                    'peak_time': self.peak_time,
+                    'status': status
+                })
+                if ai_recommendations:
+                    data['recommendations'] = ai_recommendations
+            except Exception as ai_error:
+                print(f"AI recommendation error: {ai_error}")
 
-        return {
-            'timestamps': list(reversed(timestamps)),
-            'values': list(reversed(values))
-        }
+            # Save to Firebase
+            try:
+                self.save_to_firebase(user_id, data)
+            except Exception as save_error:
+                print(f"Firebase save error: {save_error}")
 
-    def _generate_recommendations(self, current_data):
-        """Generate energy-saving recommendations"""
-        recommendations = [
-            "Monitor your energy usage patterns",
-            "Consider upgrading to energy-efficient appliances",
-            "Set up automated controls for optimal usage"
-        ]
+            return data
+            
+        except Exception as e:
+            print(f"Error in get_dashboard_data: {e}")
+            return {
+                'real_time': {
+                    'current_power': 0.00,
+                    'status': 'normal',
+                    'peak_value': 0.00,
+                    'peak_time': '--:--',
+                    'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                },
+                'daily_total': 0.00,
+                'recommendations': [
+                    "Monitor your energy usage patterns",
+                    "Consider upgrading to energy-efficient appliances",
+                    "Set up automated controls for optimal usage"
+                ],
+                'historical': {
+                    'values': [],
+                    'timestamps': []
+                }
+            }
 
-        if current_data['status'] == 'high':
-            recommendations.append("Reduce power usage during peak hours")
-
-        return recommendations
+    def get_historical_data(self, user_id):
+        try:
+            historical_ref = self.db.reference(f'users/{user_id}/energy_data/historical').get()
+            if not historical_ref:
+                return {'timestamps': [], 'values': []}
+            
+            historical_data = list(historical_ref.values())
+            return {
+                'timestamps': [entry['timestamp'] for entry in historical_data],
+                'values': [entry['power'] for entry in historical_data]
+            }
+        except Exception as e:
+            print(f"Error getting historical data: {e}")
+            return {'timestamps': [], 'values': []}

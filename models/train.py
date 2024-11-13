@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 import joblib
 import os
 from utils.preprocessing import DataPreprocessor
-from app.models.trainer import EnergyModel
+from models.trainer import EnergyModel
 
 
 def train_model():
