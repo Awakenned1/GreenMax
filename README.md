@@ -29,7 +29,7 @@ GreenMax is an intelligent energy monitoring system that helps users track, anal
 
 ## Installation
 1. Clone the repository:
-bash git clone https://github.com/yourusername/GreenMax-1.git cd GreenMax-1
+bash git clone https://github.com/Awakenned1/GreenMax-1.git cd GreenMax-1
 
 
 2. Create virtual environment:
