@@ -68,7 +68,7 @@ def init_firebase():
         logger.error(f"Firebase initialization error: {e}")
         return False
 
-def create_app():
+def create_app() -> Flask:
     # Initialize Firebase first
     init_firebase()
     

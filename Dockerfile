@@ -22,7 +22,7 @@ RUN pipenv install --system --deploy
 COPY . .
 
 # Expose the desired port (e.g., 5000 if Flask, or 8000 for Django)
-EXPOSE 5000
+EXPOSE 8080
 
 # Set the default command to run the application
 CMD ["pipenv", "run", "python", "run.py"]
