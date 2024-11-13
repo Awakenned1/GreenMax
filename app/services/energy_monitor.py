@@ -12,12 +12,14 @@ load_dotenv()
 
 class EnergyMonitoringSystem:
     def __init__(self):
+        # Initialize Firebase
         if not firebase_admin._apps:
             cred = credentials.Certificate("Service-key.json")
             firebase_admin.initialize_app(cred, {
                 'databaseURL': os.getenv('FIREBASE_DATABASE_URL')
             })
         
+        # Initialize Gemini AI Model
         try:
             genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
             self.model = genai.GenerativeModel('gemini-pro')
@@ -32,6 +34,7 @@ class EnergyMonitoringSystem:
         self.db = db
 
     def generate_realistic_power_data(self):
+        """Generate realistic power consumption values based on the time of day."""
         current_hour = datetime.now().hour
         if 0 <= current_hour < 6:
             base_load = random.uniform(0.3, 0.8)
@@ -48,6 +51,7 @@ class EnergyMonitoringSystem:
         return round(max(0.1, min(5.0, base_load + noise)), 2)
 
     def get_ai_recommendations(self, usage_data):
+        """Generate AI recommendations for improving energy efficiency."""
         try:
             if not self.model:
                 raise Exception("Gemini model not initialized")
@@ -79,22 +83,8 @@ class EnergyMonitoringSystem:
                 "Set up automated controls for optimal usage"
             ]
 
-    def predict_future_usage(self, historical_data):
-        try:
-            if not historical_data:
-                return None
-
-            recent_values = [entry['power'] for entry in historical_data[-24:]]
-            if not recent_values:
-                return None
-
-            prediction = sum(recent_values) / len(recent_values)
-            return round(min(5.0, max(0.1, prediction)), 2)
-        except Exception as e:
-            print(f"Prediction error: {e}")
-            return None
-
     def save_to_firebase(self, user_id, data):
+        """Save energy data to Firebase."""
         try:
             timestamp = datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
             user_ref = self.db.reference(f'users/{user_id}/energy_data')
@@ -108,9 +98,11 @@ class EnergyMonitoringSystem:
                 'daily_total': data['daily_total']
             }
             
+            # Set current data and add to historical
             user_ref.child('current').set(current_data)
             user_ref.child('historical').push(current_data)
             
+            # Save recommendations
             if 'recommendations' in data:
                 user_ref.child('recommendations').set(data['recommendations'])
             
@@ -120,20 +112,21 @@ class EnergyMonitoringSystem:
             return False
 
     def get_dashboard_data(self, user_id):
+        """Fetch data to be displayed on the dashboard."""
         try:
             # Generate current power data
             current_power = self.generate_realistic_power_data()
             
-            # Update peak values
+            # Update peak values if current exceeds the previous peak
             if current_power > self.peak_value:
                 self.peak_value = current_power
                 self.peak_time = datetime.now().strftime('%H:%M')
 
-            # Determine status
+            # Determine current power status
             status = 'high' if current_power > 4.0 else 'low' if current_power < 1.0 else 'normal'
 
+            # Safely get historical data from Firebase
             try:
-                # Safely get historical data from Firebase
                 historical_ref = self.db.reference(f'users/{user_id}/energy_data/historical')
                 historical_data = historical_ref.get() if historical_ref else {}
                 historical_list = list(historical_data.values()) if historical_data else []
@@ -141,7 +134,7 @@ class EnergyMonitoringSystem:
                 print(f"Firebase error: {firebase_error}")
                 historical_list = []
 
-            # Calculate daily total
+            # Calculate daily total energy consumption
             today = datetime.now().strftime('%Y-%m-%d')
             today_data = [
                 entry for entry in historical_list 
@@ -173,7 +166,7 @@ class EnergyMonitoringSystem:
                 ]
             }
 
-            # Try to get AI recommendations
+            # Get AI recommendations if possible
             try:
                 ai_recommendations = self.get_ai_recommendations({
                     'current_power': current_power,
@@ -187,7 +180,7 @@ class EnergyMonitoringSystem:
             except Exception as ai_error:
                 print(f"AI recommendation error: {ai_error}")
 
-            # Save to Firebase
+            # Save updated data to Firebase
             try:
                 self.save_to_firebase(user_id, data)
             except Exception as save_error:
@@ -218,6 +211,7 @@ class EnergyMonitoringSystem:
             }
 
     def get_historical_data(self, user_id):
+        """Retrieve historical energy consumption data."""
         try:
             historical_ref = self.db.reference(f'users/{user_id}/energy_data/historical').get()
             if not historical_ref:

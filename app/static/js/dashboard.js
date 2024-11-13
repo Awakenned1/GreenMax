@@ -11,6 +11,9 @@ class DashboardManager {
         this.initializeChart();
         this.setupEventListeners();
         this.startPeriodicUpdates();
+        this.handleVisibilityChanges();
+        this.handleOnlineOfflineStatus();
+        this.addErrorHandling();
     }
 
     initializeChart() {
@@ -101,6 +104,14 @@ class DashboardManager {
                 card.classList.remove('highlight');
             });
         });
+
+        // Add click event listener to refresh button
+        const refreshButton = document.querySelector('.refresh-button');
+        if (refreshButton) {
+            refreshButton.addEventListener('click', () => {
+                this.fetchData('day');
+            });
+        }
     }
 
     startPeriodicUpdates() {
@@ -225,172 +236,52 @@ class DashboardManager {
         errorDiv.textContent = message;
         
         const dashboard = document.querySelector('.dashboard');
-        dashboard.insertBefore(errorDiv, dashboard.firstChild);
-        
-        setTimeout(() => errorDiv.remove(), 5000);
+        if (dashboard) {
+            dashboard.insertBefore(errorDiv, dashboard.firstChild);
+            
+            setTimeout(() => errorDiv.remove(), 5000);
+        }
+    }
+
+    handleVisibilityChanges() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                console.log('Dashboard updates paused');
+            } else {
+                console.log('Dashboard updates resumed');
+                window.dashboardManager?.fetchData();
+            }
+        });
+    }
+
+    handleOnlineOfflineStatus() {
+        window.addEventListener('online', () => {
+            console.log('Connection restored');
+            document.querySelector('.dashboard').classList.remove('offline');
+            window.dashboardManager?.fetchData();
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('Connection lost');
+            document.querySelector('.dashboard').classList.add('offline');
+        });
+    }
+
+    addErrorHandling() {
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+            const dashboard = document.querySelector('.dashboard');
+            if (dashboard) {
+                const errorBanner = document.createElement('div');
+                errorBanner.className = 'alert alert-error';
+                errorBanner.textContent = 'An error occurred. Please refresh the page.';
+                dashboard.insertBefore(errorBanner, dashboard.firstChild);
+            }
+        });
     }
 }
 
 // Initialize dashboard when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new DashboardManager();
+    window.dashboardManager = new DashboardManager();
 });
-
-// Handle visibility changes to pause/resume updates
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        // Page is hidden, could pause updates
-        console.log('Dashboard updates paused');
-    } else {
-        // Page is visible again, could resume updates
-        console.log('Dashboard updates resumed');
-        // Optionally fetch fresh data
-        window.dashboardManager?.fetchData();
-    }
-});
-// Handle offline/online status
-window.addEventListener('online', () => {
-    console.log('Connection restored');
-    document.querySelector('.dashboard').classList.remove('offline');
-    window.dashboardManager?.fetchData();
-});
-
-window.addEventListener('offline', () => {
-    console.log('Connection lost');
-    document.querySelector('.dashboard').classList.add('offline');
-});
-
-// Handle errors gracefully
-window.addEventListener('error', (event) => {
-    console.error('Global error:', event.error);
-    const dashboard = document.querySelector('.dashboard');
-    if (dashboard) {
-        const errorBanner = document.createElement('div');
-        errorBanner.className = 'alert alert-error';
-        errorBanner.textContent = 'An error occurred. Please refresh the page.';
-        dashboard.insertBefore(errorBanner, dashboard.firstChild);
-    }
-});
-
-// Add performance monitoring
-const performanceMonitor = {
-    start: function(label) {
-        if (window.performance && window.performance.mark) {
-            performance.mark(`${label}-start`);
-        }
-    },
-
-    end: function(label) {
-        if (window.performance && window.performance.mark) {
-            performance.mark(`${label}-end`);
-            performance.measure(label, `${label}-start`, `${label}-end`);
-            const measurements = performance.getEntriesByName(label);
-            console.log(`${label} took ${measurements[0].duration.toFixed(2)}ms`);
-        }
-    }
-};
-
-// Add keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-    // Ctrl/Cmd + R to refresh data
-    if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
-        e.preventDefault();
-        window.dashboardManager?.fetchData();
-    }
-});
-
-// Add touch support for mobile devices
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-document.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const SWIPE_THRESHOLD = 50;
-    const diff = touchEndX - touchStartX;
-
-    if (Math.abs(diff) > SWIPE_THRESHOLD) {
-        const timeRange = document.getElementById('timeRange');
-        if (!timeRange) return;
-
-        const currentIndex = timeRange.selectedIndex;
-        if (diff > 0 && currentIndex > 0) {
-            // Swipe right - previous time range
-            timeRange.selectedIndex = currentIndex - 1;
-        } else if (diff < 0 && currentIndex < timeRange.options.length - 1) {
-            // Swipe left - next time range
-            timeRange.selectedIndex = currentIndex + 1;
-        }
-        timeRange.dispatchEvent(new Event('change'));
-    }
-}
-
-// Add print styles
-window.addEventListener('beforeprint', () => {
-    // Ensure chart is properly sized for printing
-    if (window.dashboardManager?.chart) {
-        window.dashboardManager.chart.resize();
-    }
-});
-
-// Add accessibility features
-document.querySelectorAll('.metric-card').forEach(card => {
-    card.setAttribute('role', 'region');
-    card.setAttribute('aria-label', card.querySelector('.metric-title').textContent);
-});
-
-// Add data export functionality
-function exportDashboardData() {
-    const data = {
-        timestamp: new Date().toISOString(),
-        metrics: {
-            currentPower: document.querySelector('#currentPower .metric-value').textContent,
-            peakUsage: document.querySelector('#peakUsage .metric-value').textContent,
-            dailyUsage: document.querySelector('#dailyUsage .metric-value').textContent
-        },
-        recommendations: Array.from(document.querySelectorAll('.recommendation-text'))
-            .map(el => el.textContent)
-    };
-
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `dashboard-export-${new Date().toISOString()}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-}
-
-// Add this to the DashboardManager class if needed
-class DashboardManager {
-    // ... previous code ...
-
-    exportData() {
-        exportDashboardData();
-    }
-
-    // Add method to handle theme changes
-    handleThemeChange(event) {
-        const isDark = event.matches;
-        if (this.chart) {
-            this.chart.options.plugins.tooltip.backgroundColor = isDark ? 
-                'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.9)';
-            this.chart.options.plugins.tooltip.titleColor = isDark ? 
-                '#ffffff' : '#2C3E50';
-            this.chart.update();
-        }
-    }
-}
-
-// Initialize theme detection
-const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-darkModeMediaQuery.addListener((e) => window.dashboardManager?.handleThemeChange(e));

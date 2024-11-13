@@ -1,78 +1,97 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="dashboard">
-    {% if error %}
-    <div class="alert alert-error">{{ error }}</div>
-    {% endif %}
-
-    <!-- Real-time Overview -->
-    <section class="dashboard-section">
-        <h2>Real-time Overview</h2>
-        <div class="metrics-grid">
-            <div class="metric-card" id="currentPower">
-                <div class="metric-header">
-                    <span class="metric-title">Current Power</span>
-                    <span class="metric-icon"><i class="fas fa-bolt"></i></span>
-                </div>
-                <div class="metric-value">{{ data.real_time.current_power|default('0.00') }} kW</div>
-                <div class="metric-status {{ data.real_time.status|default('normal')|lower }}">
-                    {{ data.real_time.status|default('Normal')|title }}
-                </div>
-            </div>
-
-            <div class="metric-card" id="peakUsage">
-                <div class="metric-header">
-                    <span class="metric-title">Peak Usage</span>
-                    <span class="metric-icon"><i class="fas fa-chart-line"></i></span>
-                </div>
-                <div class="metric-value">{{ data.real_time.peak_value|default('0.00') }} kW</div>
-                <div class="metric-subtitle">at {{ data.real_time.peak_time|default('--:--') }}</div>
-            </div>
-
-            <div class="metric-card" id="dailyUsage">
-                <div class="metric-header">
-                    <span class="metric-title">Daily Usage</span>
-                    <span class="metric-icon"><i class="fas fa-calendar-day"></i></span>
-                </div>
-                <div class="metric-value">{{ data.daily_total|default('0.00') }} kWh</div>
-                <div class="metric-subtitle">Updated <span id="lastUpdate">{{ data.real_time.timestamp|default('now') }}</span></div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenMax - Energy Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <nav class="dashboard-nav">
+        <div class="nav-brand">
+            <i class="fas fa-leaf"></i>
+            <span>GreenMax</span>
         </div>
-    </section>
+        <div class="nav-links">
+            <a href="{{ url_for('main.home') }}">Home</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        </div>
+    </nav>
 
-    <!-- Chart Section -->
-    <section class="dashboard-section">
-        <div class="section-header">
-            <h2>Energy Consumption</h2>
-            <div class="chart-controls">
-                <select id="timeRange" class="time-selector">
-                    <option value="day">24 Hours</option>
-                    <option value="week">7 Days</option>
-                    <option value="month">30 Days</option>
-                </select>
-            </div>
-        </div>
-        <div class="chart-container">
-            <canvas id="energyChart"></canvas>
-        </div>
-    </section>
+    <div class="dashboard">
+        <!-- Real-time Overview -->
+        <section class="dashboard-section">
+            <h2>Real-time Overview</h2>
+            <div class="metrics-grid">
+                <div class="metric-card" id="currentPower">
+                    <div class="metric-header">
+                        <span class="metric-title">Current Power</span>
+                        <span class="metric-icon"><i class="fas fa-bolt"></i></span>
+                    </div>
+                    <div class="metric-value">{{ data.real_time.current_power|default('0.00') }} kW</div>
+                    <div class="metric-status {{ data.real_time.status|default('normal')|lower }}">
+                        {{ data.real_time.status|default('Normal')|title }}
+                    </div>
+                </div>
 
-    <!-- Recommendations -->
-    <section class="dashboard-section">
-        <h2>Smart Recommendations</h2>
-        <div class="recommendations-list" id="recommendationsList">
-            {% for tip in data.recommendations|default([
-                "Monitor your energy usage patterns",
-                "Consider upgrading to energy-efficient appliances",
-                "Set up automated controls for optimal usage"
-            ]) %}
-            <div class="recommendation-item">
-                <span class="recommendation-icon"><i class="fas fa-lightbulb"></i></span>
-                <span class="recommendation-text">{{ tip }}</span>
+                <div class="metric-card" id="peakUsage">
+                    <div class="metric-header">
+                        <span class="metric-title">Peak Usage</span>
+                        <span class="metric-icon"><i class="fas fa-chart-line"></i></span>
+                    </div>
+                    <div class="metric-value">{{ data.real_time.peak_value|default('0.00') }} kW</div>
+                    <div class="metric-subtitle">at {{ data.real_time.peak_time|default('--:--') }}</div>
+                </div>
+
+                <div class="metric-card" id="dailyUsage">
+                    <div class="metric-header">
+                        <span class="metric-title">Daily Usage</span>
+                        <span class="metric-icon"><i class="fas fa-calendar-day"></i></span>
+                    </div>
+                    <div class="metric-value">{{ data.daily_total|default('0.00') }} kWh</div>
+                    <div class="metric-subtitle">Updated <span id="lastUpdate">{{ data.real_time.timestamp|default('now') }}</span></div>
+                </div>
             </div>
-            {% endfor %}
-        </div>
-    </section>
-</div>
-{% endblock %}
+        </section>
+
+        <!-- Consumption Chart -->
+        <section class="dashboard-section">
+            <div class="section-header">
+                <h2>Energy Consumption</h2>
+                <div class="chart-controls">
+                    <select id="timeRange" class="time-selector">
+                        <option value="day">24 Hours</option>
+                        <option value="week">7 Days</option>
+                        <option value="month">30 Days</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="energyChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Recommendations -->
+        <section class="dashboard-section">
+            <h2>Smart Recommendations</h2>
+            <div class="recommendations-list" id="recommendationsList">
+                {% for tip in data.recommendations|default([
+                    "Monitor your energy usage patterns",
+                    "Consider upgrading to energy-efficient appliances",
+                    "Set up automated controls for optimal usage"
+                ]) %}
+                <div class="recommendation-item">
+                    <span class="recommendation-icon"><i class="fas fa-lightbulb"></i></span>
+                    <span class="recommendation-text">{{ tip }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

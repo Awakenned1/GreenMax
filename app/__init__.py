@@ -7,26 +7,57 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import firebase_admin
 from firebase_admin import credentials
+import google.generativeai as genai
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Initialize extensions
 db = SQLAlchemy()
 login_manager = LoginManager()
 csrf = CSRFProtect()
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('app.log')
+    ]
+)
 logger = logging.getLogger(__name__)
+
+def init_gemini():
+    """Initialize Gemini AI"""
+    try:
+        api_key = os.getenv('GEMINI_API_KEY')
+        if not api_key:
+            logger.warning("GEMINI_API_KEY not found in environment variables")
+            return None
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel('gemini-pro')
+        logger.info("Gemini AI initialized successfully")
+        return model
+    except Exception as e:
+        logger.error(f"Gemini AI initialization error: {e}")
+        return None
 
 def create_app():
     app = Flask(__name__)
     
     # Configure app
     app.config.update(
-        SECRET_KEY=os.getenv('SECRET_KEY', 'your-secret-key'),
-        PERMANENT_SESSION_LIFETIME=timedelta(minutes=60),
+        SECRET_KEY=os.getenv('SECRET_KEY', os.urandom(24)),
+        PERMANENT_SESSION_LIFETIME=timedelta(minutes=int(os.getenv('SESSION_LIFETIME', 60))),
         WTF_CSRF_SECRET_KEY=os.urandom(24),
-        FIREBASE_DATABASE_URL=os.getenv('FIREBASE_DATABASE_URL', 'https://nifty-state-440816-u2-default-rtdb.firebaseio.com'),
+        FIREBASE_DATABASE_URL=os.getenv('FIREBASE_DATABASE_URL'),
         SQLALCHEMY_DATABASE_URI=os.getenv('DATABASE_URL', 'sqlite:///greenmax.db'),
-        SQLALCHEMY_TRACK_MODIFICATIONS=False
+        SQLALCHEMY_TRACK_MODIFICATIONS=False,
+        MAX_CONTENT_LENGTH=16 * 1024 * 1024,  # 16MB max file size
+        TEMPLATES_AUTO_RELOAD=True,
+        DEBUG=os.getenv('FLASK_ENV') == 'development'
     )
     
     # Initialize extensions
@@ -40,20 +71,43 @@ def create_app():
     # Initialize Firebase
     try:
         if not firebase_admin._apps:
-            cred = credentials.Certificate("Service-key.json")
+            cred_path = os.getenv('FIREBASE_CREDENTIALS_PATH', 'Service-key.json')
+            if not os.path.exists(cred_path):
+                raise FileNotFoundError(f"Firebase credentials file not found: {cred_path}")
+            
+            cred = credentials.Certificate(cred_path)
             firebase_admin.initialize_app(cred, {
                 'databaseURL': app.config['FIREBASE_DATABASE_URL']
             })
             logger.info("Firebase initialized successfully")
     except Exception as e:
         logger.error(f"Firebase initialization error: {e}")
-        raise
+        if app.config['DEBUG']:
+            raise
+    
+    # Initialize Gemini AI
+    app.config['GEMINI_MODEL'] = init_gemini()
 
-    # Import models here to avoid circular import
-    from .models import User
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
+    # Import models
+    with app.app_context():
+        from .models import User
+        
+        @login_manager.user_loader
+        def load_user(user_id):
+            try:
+                return User.query.get(int(user_id))
+            except Exception as e:
+                logger.error(f"Error loading user: {e}")
+                return None
+
+        # Create database tables
+        try:
+            db.create_all()
+            logger.info("Database tables created successfully")
+        except Exception as e:
+            logger.error(f"Database initialization error: {e}")
+            if app.config['DEBUG']:
+                raise
 
     # Register blueprints
     from .routes import main_bp
@@ -65,18 +119,26 @@ def create_app():
     # Error handlers
     @app.errorhandler(404)
     def not_found_error(error):
+        logger.warning(f"404 error: {error}")
         return render_template('errors/404.html'), 404
 
     @app.errorhandler(500)
     def internal_error(error):
+        logger.error(f"500 error: {error}")
+        db.session.rollback()
         return render_template('errors/500.html'), 500
 
     @app.errorhandler(403)
     def forbidden_error(error):
+        logger.warning(f"403 error: {error}")
         return render_template('errors/403.html'), 403
 
-    # Create database tables
-    with app.app_context():
-        db.create_all()
+    @app.after_request
+    def add_security_headers(response):
+        """Add security headers to response"""
+        response.headers['X-Content-Type-Options'] = 'nosniff'
+        response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+        response.headers['X-XSS-Protection'] = '1; mode=block'
+        return response
 
     return app

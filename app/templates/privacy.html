@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}GreenMax - Smart Energy Monitoring{% endblock %}
+
+{% block styles %}
+<style>
+    .legal-content {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .legal-content h1 {
+        color: #2d8bac;
+        margin-bottom: 1rem;
+    }
+
+    .legal-content section {
+        margin: 2rem 0;
+    }
+
+    .legal-content h2 {
+        color: #1a5f7a;
+        margin-bottom: 1rem;
+    }
+
+    .legal-content ul {
+        list-style-type: disc;
+        margin-left: 2rem;
+    }
+
+    .legal-content li {
+        margin: 0.5rem 0;
+    }
+    .hero {
+        background: linear-gradient(135deg, #1a5f7a 0%, #2d8bac 100%);
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        color: #2d8bac;
+        margin-bottom: 1rem;
+    }
+
+    .cta-section {
+        background: #2d8bac;
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #fff;
+        color: #2d8bac;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 1rem;
+        transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background: #f8f9fa;
+    }
+
+    #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div id="particles-js"></div>
+    <div class="hero-content">
+        <h1>Welcome to GreenMax</h1>
+        <p>Smart Energy Monitoring for a Sustainable Future</p>
+        {% if 'user' not in session %}
+            <a href="{{ url_for('auth.register') }}" class="cta-button">Get Started</a>
+        {% else %}
+            <a href="{{ url_for('main.dashboard') }}" class="cta-button">View Dashboard</a>
+        {% endif %}
+    </div>
+</div>
+
+<section class="features">
+    <div class="feature-card">
+        <i class="fas fa-chart-line feature-icon"></i>
+        <h3>Real-time Monitoring</h3>
+        <p>Track your energy consumption in real-time with detailed analytics and insights.</p>
+    </div>
+    <div class="feature-card">
+        <i class="fas fa-lightbulb feature-icon"></i>
+        <h3>Smart Recommendations</h3>
+        <p>Get AI-powered suggestions to optimize your energy usage and reduce costs.</p>
+    </div>
+    <div class="feature-card">
+        <i class="fas fa-leaf feature-icon"></i>
+        <h3>Eco-friendly Impact</h3>
+        <p>Monitor your carbon footprint and contribute to a sustainable future.</p>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Ready to Optimize Your Energy Usage?</h2>
+    <p>Join thousands of users who are making a difference with GreenMax.</p>
+    {% if 'user' not in session %}
+        <a href="{{ url_for('auth.register') }}" class="cta-button">Sign Up Now</a>
+    {% endif %}
+</section>
+<div class="container legal-content">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: November 13, 2024</p>
+
+    <section>
+        <h2>1. Information We Collect</h2>
+        <p>We collect information that you provide directly to us, including:</p>
+        <ul>
+            <li>Account information (name, email, password)</li>
+            <li>Energy consumption data</li>
+            <li>Device information</li>
+            <li>Usage patterns and preferences</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+            <li>Provide and improve our services</li>
+            <li>Generate energy consumption insights</li>
+            <li>Send notifications and recommendations</li>
+            <li>Analyze usage patterns for optimization</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>3. Data Security</h2>
+        <p>We implement appropriate security measures to protect your data.</p>
+    </section>
+
+    <section>
+        <h2>4. Contact Us</h2>
+        <p>For any questions about this Privacy Policy, please contact us at:</p>
+        <p>Email: privacy@greenmax.com</p>
+    </section>
+</div>
+<script>
+particlesJS('particles-js', {
+    particles: {
+        number: { value: 80 },
+        color: { value: '#ffffff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        move: {
+            enable: true,
+            speed: 2
+        }
+    }
+});
+</script>
+{% endblock %}
