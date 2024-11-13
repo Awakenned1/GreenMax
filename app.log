@@ -35,3 +35,447 @@
 2024-11-13 13:02:02,777 - INFO - 127.0.0.1 - - [13/Nov/2024 13:02:02] "GET /auth/login HTTP/1.1" 200 -
 2024-11-13 13:03:02,773 - INFO - 127.0.0.1 - - [13/Nov/2024 13:03:02] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
 2024-11-13 13:03:02,779 - INFO - 127.0.0.1 - - [13/Nov/2024 13:03:02] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:05:31,634 - INFO - Firebase initialized successfully
+2024-11-13 13:05:31,634 - INFO - Gemini AI initialized successfully
+2024-11-13 13:05:31,640 - INFO - Database tables created successfully
+2024-11-13 13:05:32,505 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-13 13:05:32,505 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-13 13:05:32,506 - INFO -  * Restarting with stat
+2024-11-13 13:05:33,340 - INFO - Firebase initialized successfully
+2024-11-13 13:05:33,341 - INFO - Gemini AI initialized successfully
+2024-11-13 13:05:33,347 - INFO - Database tables created successfully
+2024-11-13 13:05:34,052 - WARNING -  * Debugger is active!
+2024-11-13 13:05:34,055 - INFO -  * Debugger PIN: 673-864-907
+2024-11-13 13:05:38,135 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:38] "GET / HTTP/1.1" 200 -
+2024-11-13 13:05:38,247 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:05:38,252 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:38] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:05:38,253 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:38] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:05:38,260 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:38] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 13:05:40,609 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:40] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:05:40,624 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:40] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:05:40,626 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:40] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:05:43,714 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:43] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-11-13 13:05:51,115 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:51] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:05:51,139 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:51] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+2024-11-13 13:05:51,141 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:51] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:05:56,072 - INFO - 127.0.0.1 - - [13/Nov/2024 13:05:56] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:06:09,894 - INFO - 127.0.0.1 - - [13/Nov/2024 13:06:09] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:06:57,484 - INFO - 127.0.0.1 - - [13/Nov/2024 13:06:57] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:07:11,355 - INFO - 127.0.0.1 - - [13/Nov/2024 13:07:11] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:07:56,961 - INFO - 127.0.0.1 - - [13/Nov/2024 13:07:56] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:08:11,283 - INFO - 127.0.0.1 - - [13/Nov/2024 13:08:11] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:08:58,238 - INFO - 127.0.0.1 - - [13/Nov/2024 13:08:58] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:09:14,698 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:14] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:09:24,214 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:24] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:09:55,408 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:55] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-11-13 13:09:55,413 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:55] "GET / HTTP/1.1" 200 -
+2024-11-13 13:09:55,438 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:09:55,443 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:55] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:09:55,444 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:55] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:09:55,447 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:55] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 13:09:57,550 - INFO - 127.0.0.1 - - [13/Nov/2024 13:09:57] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:10:09,155 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:09] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:10:09,159 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:09] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:10:09,607 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:09] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:10:09,629 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:09] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:10:09,630 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:09] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:10:16,266 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:16] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-11-13 13:10:21,327 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:21] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:10:21,349 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:21] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 13:10:21,350 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:21] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:10:27,183 - INFO - 127.0.0.1 - - [13/Nov/2024 13:10:27] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:11:10,561 - INFO - 127.0.0.1 - - [13/Nov/2024 13:11:10] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:11:15,322 - INFO - 127.0.0.1 - - [13/Nov/2024 13:11:15] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:11:26,157 - INFO - 127.0.0.1 - - [13/Nov/2024 13:11:26] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:12:15,525 - INFO - 127.0.0.1 - - [13/Nov/2024 13:12:15] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:12:25,515 - INFO - 127.0.0.1 - - [13/Nov/2024 13:12:25] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:13:17,161 - INFO - 127.0.0.1 - - [13/Nov/2024 13:13:17] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:13:26,258 - INFO - 127.0.0.1 - - [13/Nov/2024 13:13:26] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:14:17,969 - INFO - 127.0.0.1 - - [13/Nov/2024 13:14:17] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:14:27,564 - INFO - 127.0.0.1 - - [13/Nov/2024 13:14:27] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:15:19,027 - INFO - 127.0.0.1 - - [13/Nov/2024 13:15:19] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:15:27,161 - INFO - 127.0.0.1 - - [13/Nov/2024 13:15:27] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:16:10,058 - INFO - 127.0.0.1 - - [13/Nov/2024 13:16:10] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:16:21,403 - INFO - 127.0.0.1 - - [13/Nov/2024 13:16:21] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:16:23,456 - INFO - 127.0.0.1 - - [13/Nov/2024 13:16:23] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:16:23,473 - INFO - 127.0.0.1 - - [13/Nov/2024 13:16:23] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+2024-11-13 13:16:23,475 - INFO - 127.0.0.1 - - [13/Nov/2024 13:16:23] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:16:27,555 - INFO - 127.0.0.1 - - [13/Nov/2024 13:16:27] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:16:29,199 - INFO - 127.0.0.1 - - [13/Nov/2024 13:16:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:17:21,283 - INFO - 127.0.0.1 - - [13/Nov/2024 13:17:21] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:17:28,934 - INFO - 127.0.0.1 - - [13/Nov/2024 13:17:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:18:23,793 - INFO - 127.0.0.1 - - [13/Nov/2024 13:18:23] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:18:29,153 - INFO - 127.0.0.1 - - [13/Nov/2024 13:18:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:19:23,569 - INFO - 127.0.0.1 - - [13/Nov/2024 13:19:23] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:19:28,764 - INFO - 127.0.0.1 - - [13/Nov/2024 13:19:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:20:14,128 - INFO -  * Detected change in 'c:\\Users\\Techsupport\\GreenMax-1\\app\\services\\energy_monitor.py', reloading
+2024-11-13 13:20:14,407 - INFO -  * Restarting with stat
+2024-11-13 13:20:15,342 - INFO - Firebase initialized successfully
+2024-11-13 13:20:15,343 - INFO - Gemini AI initialized successfully
+2024-11-13 13:20:15,349 - INFO - Database tables created successfully
+2024-11-13 13:20:16,223 - WARNING -  * Debugger is active!
+2024-11-13 13:20:16,226 - INFO -  * Debugger PIN: 673-864-907
+2024-11-13 13:20:17,534 - INFO - 127.0.0.1 - - [13/Nov/2024 13:20:17] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:20:17,556 - INFO - 127.0.0.1 - - [13/Nov/2024 13:20:17] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:20:19,151 - INFO - 127.0.0.1 - - [13/Nov/2024 13:20:19] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:20:19,157 - INFO - 127.0.0.1 - - [13/Nov/2024 13:20:19] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:20:20,087 - INFO - 127.0.0.1 - - [13/Nov/2024 13:20:20] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:20:20,094 - INFO - 127.0.0.1 - - [13/Nov/2024 13:20:20] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:20:23,512 - INFO - 127.0.0.1 - - [13/Nov/2024 13:20:23] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:20:23,519 - INFO - 127.0.0.1 - - [13/Nov/2024 13:20:23] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:21:20,151 - INFO - 127.0.0.1 - - [13/Nov/2024 13:21:20] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:21:20,157 - INFO - 127.0.0.1 - - [13/Nov/2024 13:21:20] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:21:24,160 - INFO - 127.0.0.1 - - [13/Nov/2024 13:21:24] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:21:24,167 - INFO - 127.0.0.1 - - [13/Nov/2024 13:21:24] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:22:21,150 - INFO - 127.0.0.1 - - [13/Nov/2024 13:22:21] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:22:21,157 - INFO - 127.0.0.1 - - [13/Nov/2024 13:22:21] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:22:25,146 - INFO - 127.0.0.1 - - [13/Nov/2024 13:22:25] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:22:25,152 - INFO - 127.0.0.1 - - [13/Nov/2024 13:22:25] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:23:22,160 - INFO - 127.0.0.1 - - [13/Nov/2024 13:23:22] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:23:22,167 - INFO - 127.0.0.1 - - [13/Nov/2024 13:23:22] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:23:26,158 - INFO - 127.0.0.1 - - [13/Nov/2024 13:23:26] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:23:26,165 - INFO - 127.0.0.1 - - [13/Nov/2024 13:23:26] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:23:55,052 - INFO - 127.0.0.1 - - [13/Nov/2024 13:23:55] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:23:55,085 - INFO - 127.0.0.1 - - [13/Nov/2024 13:23:55] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:24:23,154 - INFO - 127.0.0.1 - - [13/Nov/2024 13:24:23] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:24:23,160 - INFO - 127.0.0.1 - - [13/Nov/2024 13:24:23] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:24:24,157 - INFO - 127.0.0.1 - - [13/Nov/2024 13:24:24] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:24:24,164 - INFO - 127.0.0.1 - - [13/Nov/2024 13:24:24] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:25:24,152 - INFO - 127.0.0.1 - - [13/Nov/2024 13:25:24] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:25:24,160 - INFO - 127.0.0.1 - - [13/Nov/2024 13:25:24] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:25:25,146 - INFO - 127.0.0.1 - - [13/Nov/2024 13:25:25] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:25:25,153 - INFO - 127.0.0.1 - - [13/Nov/2024 13:25:25] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:26:25,166 - INFO - 127.0.0.1 - - [13/Nov/2024 13:26:25] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:26:25,214 - INFO - 127.0.0.1 - - [13/Nov/2024 13:26:25] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:26:26,396 - INFO - 127.0.0.1 - - [13/Nov/2024 13:26:26] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:26:26,515 - INFO - 127.0.0.1 - - [13/Nov/2024 13:26:26] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:27:27,151 - INFO - 127.0.0.1 - - [13/Nov/2024 13:27:27] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:27:27,158 - INFO - 127.0.0.1 - - [13/Nov/2024 13:27:27] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:28:28,146 - INFO - 127.0.0.1 - - [13/Nov/2024 13:28:28] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:28:28,153 - INFO - 127.0.0.1 - - [13/Nov/2024 13:28:28] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:29:29,149 - INFO - 127.0.0.1 - - [13/Nov/2024 13:29:29] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:29:29,155 - INFO - 127.0.0.1 - - [13/Nov/2024 13:29:29] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:30:30,150 - INFO - 127.0.0.1 - - [13/Nov/2024 13:30:30] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:30:30,157 - INFO - 127.0.0.1 - - [13/Nov/2024 13:30:30] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:31:31,156 - INFO - 127.0.0.1 - - [13/Nov/2024 13:31:31] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:31:31,161 - INFO - 127.0.0.1 - - [13/Nov/2024 13:31:31] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:32:27,411 - INFO -  * Detected change in 'c:\\Users\\Techsupport\\GreenMax-1\\app\\services\\energy_monitor.py', reloading
+2024-11-13 13:32:27,680 - INFO -  * Restarting with stat
+2024-11-13 13:32:29,235 - INFO - Firebase initialized successfully
+2024-11-13 13:32:29,235 - INFO - Gemini AI initialized successfully
+2024-11-13 13:32:29,244 - INFO - Database tables created successfully
+2024-11-13 13:33:48,873 - INFO - Firebase initialized successfully
+2024-11-13 13:33:48,874 - INFO - Gemini AI initialized successfully
+2024-11-13 13:33:48,893 - INFO - Database tables created successfully
+2024-11-13 13:33:56,915 - INFO - Firebase initialized successfully
+2024-11-13 13:33:56,916 - INFO - Gemini AI initialized successfully
+2024-11-13 13:33:56,922 - INFO - Database tables created successfully
+2024-11-13 13:34:38,245 - INFO - Firebase initialized successfully
+2024-11-13 13:34:38,245 - INFO - Gemini AI initialized successfully
+2024-11-13 13:34:38,253 - INFO - Database tables created successfully
+2024-11-13 13:34:39,481 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-13 13:34:39,481 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-13 13:34:39,483 - INFO -  * Restarting with stat
+2024-11-13 13:34:40,506 - INFO - Firebase initialized successfully
+2024-11-13 13:34:40,507 - INFO - Gemini AI initialized successfully
+2024-11-13 13:34:40,513 - INFO - Database tables created successfully
+2024-11-13 13:34:41,376 - WARNING -  * Debugger is active!
+2024-11-13 13:34:41,379 - INFO -  * Debugger PIN: 673-864-907
+2024-11-13 13:34:44,495 - INFO - 127.0.0.1 - - [13/Nov/2024 13:34:44] "GET / HTTP/1.1" 200 -
+2024-11-13 13:34:44,637 - INFO - 127.0.0.1 - - [13/Nov/2024 13:34:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:34:44,643 - INFO - 127.0.0.1 - - [13/Nov/2024 13:34:44] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:34:44,645 - INFO - 127.0.0.1 - - [13/Nov/2024 13:34:44] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:34:44,656 - INFO - 127.0.0.1 - - [13/Nov/2024 13:34:44] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 13:34:57,387 - INFO - 127.0.0.1 - - [13/Nov/2024 13:34:57] "GET /privacy HTTP/1.1" 200 -
+2024-11-13 13:34:57,412 - INFO - 127.0.0.1 - - [13/Nov/2024 13:34:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:35:01,896 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:01] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:35:01,920 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:01] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:35:01,921 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:01] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:35:06,074 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:06] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-11-13 13:35:13,557 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:13] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:35:13,584 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:13] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+2024-11-13 13:35:13,585 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:13] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:35:18,116 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:18] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:35:38,339 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:38] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:35:38,357 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:38] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 13:35:38,358 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:38] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:35:42,981 - INFO - 127.0.0.1 - - [13/Nov/2024 13:35:42] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:36:22,616 - INFO - 127.0.0.1 - - [13/Nov/2024 13:36:22] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-11-13 13:36:22,622 - INFO - 127.0.0.1 - - [13/Nov/2024 13:36:22] "GET / HTTP/1.1" 200 -
+2024-11-13 13:36:22,652 - INFO - 127.0.0.1 - - [13/Nov/2024 13:36:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:36:22,654 - INFO - 127.0.0.1 - - [13/Nov/2024 13:36:22] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:36:22,658 - INFO - 127.0.0.1 - - [13/Nov/2024 13:36:22] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:36:22,661 - INFO - 127.0.0.1 - - [13/Nov/2024 13:36:22] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 13:40:32,263 - INFO - 127.0.0.1 - - [13/Nov/2024 13:40:32] "GET /auth/register HTTP/1.1" 200 -
+2024-11-13 13:40:35,468 - INFO - 127.0.0.1 - - [13/Nov/2024 13:40:35] "GET /auth/register HTTP/1.1" 200 -
+2024-11-13 13:40:35,996 - INFO - 127.0.0.1 - - [13/Nov/2024 13:40:35] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:40:35,997 - INFO - 127.0.0.1 - - [13/Nov/2024 13:40:35] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:40:53,201 - WARNING - 404 error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-11-13 13:40:53,205 - INFO - 127.0.0.1 - - [13/Nov/2024 13:40:53] "[33mGET /auth/google-login HTTP/1.1[0m" 404 -
+2024-11-13 13:40:54,887 - WARNING - 404 error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-11-13 13:40:54,889 - INFO - 127.0.0.1 - - [13/Nov/2024 13:40:54] "[33mGET /auth/google-login HTTP/1.1[0m" 404 -
+2024-11-13 13:40:58,021 - WARNING - 404 error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-11-13 13:40:58,023 - INFO - 127.0.0.1 - - [13/Nov/2024 13:40:58] "[33mGET /auth/github-login HTTP/1.1[0m" 404 -
+2024-11-13 13:41:09,415 - INFO - 127.0.0.1 - - [13/Nov/2024 13:41:09] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:41:09,436 - INFO - 127.0.0.1 - - [13/Nov/2024 13:41:09] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:41:09,440 - INFO - 127.0.0.1 - - [13/Nov/2024 13:41:09] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:41:17,369 - INFO - 127.0.0.1 - - [13/Nov/2024 13:41:17] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-11-13 13:41:23,497 - INFO - 127.0.0.1 - - [13/Nov/2024 13:41:23] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:41:23,523 - INFO - 127.0.0.1 - - [13/Nov/2024 13:41:23] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 13:41:23,523 - INFO - 127.0.0.1 - - [13/Nov/2024 13:41:23] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:41:28,592 - INFO - 127.0.0.1 - - [13/Nov/2024 13:41:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:42:29,444 - INFO - 127.0.0.1 - - [13/Nov/2024 13:42:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:43:28,953 - INFO - 127.0.0.1 - - [13/Nov/2024 13:43:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:44:28,843 - INFO - 127.0.0.1 - - [13/Nov/2024 13:44:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:45:28,921 - INFO - 127.0.0.1 - - [13/Nov/2024 13:45:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:46:29,000 - INFO - 127.0.0.1 - - [13/Nov/2024 13:46:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:47:28,574 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:47:47,353 - INFO - Firebase initialized successfully
+2024-11-13 13:47:47,355 - INFO - Gemini AI initialized successfully
+2024-11-13 13:47:47,360 - INFO - Database tables created successfully
+2024-11-13 13:47:48,242 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-13 13:47:48,242 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-13 13:47:48,243 - INFO -  * Restarting with stat
+2024-11-13 13:47:49,210 - INFO - Firebase initialized successfully
+2024-11-13 13:47:49,211 - INFO - Gemini AI initialized successfully
+2024-11-13 13:47:49,217 - INFO - Database tables created successfully
+2024-11-13 13:47:50,021 - WARNING -  * Debugger is active!
+2024-11-13 13:47:50,024 - INFO -  * Debugger PIN: 673-864-907
+2024-11-13 13:47:52,505 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:52] "GET / HTTP/1.1" 200 -
+2024-11-13 13:47:52,648 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:47:52,651 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:52] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:47:52,656 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:52] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 13:47:52,657 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:52] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:47:54,439 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:54] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:47:54,465 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:54] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:47:54,466 - INFO - 127.0.0.1 - - [13/Nov/2024 13:47:54] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:48:07,125 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:07] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-11-13 13:48:14,780 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:14] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:48:14,805 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:14] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 13:48:14,807 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:14] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:48:19,462 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:19] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:48:29,545 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:48:59,729 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:59] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:48:59,747 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:59] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 13:48:59,750 - INFO - 127.0.0.1 - - [13/Nov/2024 13:48:59] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:49:05,399 - INFO - 127.0.0.1 - - [13/Nov/2024 13:49:05] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:49:30,394 - INFO - 127.0.0.1 - - [13/Nov/2024 13:49:30] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:50:03,620 - INFO - 127.0.0.1 - - [13/Nov/2024 13:50:03] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:50:31,061 - INFO - 127.0.0.1 - - [13/Nov/2024 13:50:31] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:51:04,556 - INFO - 127.0.0.1 - - [13/Nov/2024 13:51:04] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:51:32,380 - INFO - 127.0.0.1 - - [13/Nov/2024 13:51:32] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:52:03,713 - INFO - 127.0.0.1 - - [13/Nov/2024 13:52:03] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:52:33,708 - INFO - 127.0.0.1 - - [13/Nov/2024 13:52:33] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:53:04,247 - INFO - 127.0.0.1 - - [13/Nov/2024 13:53:04] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:53:35,479 - INFO - 127.0.0.1 - - [13/Nov/2024 13:53:35] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:54:05,156 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:05] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:54:35,365 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:35] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:54:43,289 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:43] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:54:43,308 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:43] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 13:54:43,315 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:43] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:54:47,434 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:47] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:54:52,857 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:52] "GET / HTTP/1.1" 200 -
+2024-11-13 13:54:52,931 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:54:52,933 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:52] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:54:52,935 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:52] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:54:52,940 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:52] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 13:54:59,944 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:59] "GET /privacy HTTP/1.1" 200 -
+2024-11-13 13:54:59,963 - INFO - 127.0.0.1 - - [13/Nov/2024 13:54:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:55:03,367 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:03] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2024-11-13 13:55:03,376 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:03] "GET / HTTP/1.1" 200 -
+2024-11-13 13:55:03,398 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:55:03,399 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:03] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:55:03,401 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:03] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:55:03,403 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:03] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 13:55:04,827 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:04] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:55:04,846 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:04] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:55:04,848 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:04] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:55:09,009 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:09] "GET /auth/register HTTP/1.1" 200 -
+2024-11-13 13:55:09,027 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:09] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:55:09,029 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:09] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:55:25,138 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:25] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:55:25,143 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:25] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:55:25,146 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:25] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:55:25,151 - INFO - 127.0.0.1 - - [13/Nov/2024 13:55:25] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:56:01,121 - INFO - 127.0.0.1 - - [13/Nov/2024 13:56:01] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:56:01,133 - INFO - 127.0.0.1 - - [13/Nov/2024 13:56:01] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:56:01,441 - INFO - 127.0.0.1 - - [13/Nov/2024 13:56:01] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:56:01,449 - INFO - 127.0.0.1 - - [13/Nov/2024 13:56:01] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:56:23,721 - INFO - 127.0.0.1 - - [13/Nov/2024 13:56:23] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:56:23,726 - INFO - 127.0.0.1 - - [13/Nov/2024 13:56:23] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:57:23,721 - INFO - 127.0.0.1 - - [13/Nov/2024 13:57:23] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 13:57:23,727 - INFO - 127.0.0.1 - - [13/Nov/2024 13:57:23] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:58:10,917 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:10] "GET / HTTP/1.1" 200 -
+2024-11-13 13:58:10,941 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 13:58:10,947 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:10] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:58:10,949 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:10] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 13:58:10,950 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:10] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 13:58:14,290 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:14] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 13:58:14,313 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:14] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 13:58:14,315 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:14] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 13:58:18,725 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:18] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-11-13 13:58:24,418 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:24] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 13:58:24,465 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:24] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 13:58:24,467 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:24] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 13:58:28,751 - INFO - 127.0.0.1 - - [13/Nov/2024 13:58:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 13:59:29,752 - INFO - 127.0.0.1 - - [13/Nov/2024 13:59:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:00:28,925 - INFO - 127.0.0.1 - - [13/Nov/2024 14:00:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:01:30,995 - INFO - 127.0.0.1 - - [13/Nov/2024 14:01:30] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:02:29,027 - INFO - 127.0.0.1 - - [13/Nov/2024 14:02:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:03:29,981 - INFO - 127.0.0.1 - - [13/Nov/2024 14:03:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:04:29,850 - INFO - 127.0.0.1 - - [13/Nov/2024 14:04:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:05:32,429 - INFO - 127.0.0.1 - - [13/Nov/2024 14:05:32] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:06:24,183 - INFO - 127.0.0.1 - - [13/Nov/2024 14:06:24] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:06:28,720 - INFO - 127.0.0.1 - - [13/Nov/2024 14:06:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:07:29,039 - INFO - 127.0.0.1 - - [13/Nov/2024 14:07:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:08:30,172 - INFO - 127.0.0.1 - - [13/Nov/2024 14:08:30] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:09:16,445 - INFO - 127.0.0.1 - - [13/Nov/2024 14:09:16] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:09:29,320 - INFO - 127.0.0.1 - - [13/Nov/2024 14:09:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:10:30,196 - INFO - 127.0.0.1 - - [13/Nov/2024 14:10:30] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:11:31,337 - INFO - 127.0.0.1 - - [13/Nov/2024 14:11:31] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:11:45,909 - INFO - 127.0.0.1 - - [13/Nov/2024 14:11:45] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:12:29,431 - INFO - 127.0.0.1 - - [13/Nov/2024 14:12:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:13:30,143 - INFO - 127.0.0.1 - - [13/Nov/2024 14:13:30] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:14:31,559 - INFO - 127.0.0.1 - - [13/Nov/2024 14:14:31] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:15:32,265 - INFO - 127.0.0.1 - - [13/Nov/2024 14:15:32] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:15:37,735 - INFO - 127.0.0.1 - - [13/Nov/2024 14:15:37] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:16:26,792 - INFO - 127.0.0.1 - - [13/Nov/2024 14:16:26] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:16:31,336 - INFO - 127.0.0.1 - - [13/Nov/2024 14:16:31] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:16:35,679 - INFO - 127.0.0.1 - - [13/Nov/2024 14:16:35] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:17:29,822 - INFO - 127.0.0.1 - - [13/Nov/2024 14:17:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:18:30,158 - INFO - 127.0.0.1 - - [13/Nov/2024 14:18:30] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:19:31,135 - INFO - 127.0.0.1 - - [13/Nov/2024 14:19:31] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:20:31,220 - INFO - 127.0.0.1 - - [13/Nov/2024 14:20:31] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:21:32,814 - INFO - 127.0.0.1 - - [13/Nov/2024 14:21:32] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:22:33,780 - INFO - 127.0.0.1 - - [13/Nov/2024 14:22:33] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:23:34,488 - INFO - 127.0.0.1 - - [13/Nov/2024 14:23:34] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:24:35,661 - INFO - 127.0.0.1 - - [13/Nov/2024 14:24:35] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:25:36,181 - INFO - 127.0.0.1 - - [13/Nov/2024 14:25:36] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:26:00,169 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:00] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:26:08,079 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:08] "GET / HTTP/1.1" 200 -
+2024-11-13 14:26:09,762 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 14:26:09,768 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:09] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 14:26:09,768 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:09] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 14:26:09,775 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:09] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 14:26:24,899 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:24] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 14:26:24,923 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:24] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 14:26:24,929 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:24] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 14:26:28,906 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:28] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:26:44,577 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:44] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 14:26:44,591 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:44] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 14:26:44,593 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:44] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 14:26:48,820 - INFO - 127.0.0.1 - - [13/Nov/2024 14:26:48] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:27:18,519 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:18] "GET / HTTP/1.1" 200 -
+2024-11-13 14:27:18,543 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 14:27:18,545 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:18] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 14:27:18,546 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:18] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 14:27:18,551 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:18] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 14:27:24,987 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:24] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 14:27:25,008 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:25] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 14:27:25,010 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:25] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 14:27:29,506 - INFO - 127.0.0.1 - - [13/Nov/2024 14:27:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:28:12,336 - INFO - 127.0.0.1 - - [13/Nov/2024 14:28:12] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:28:29,723 - INFO - 127.0.0.1 - - [13/Nov/2024 14:28:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:29:29,004 - INFO - 127.0.0.1 - - [13/Nov/2024 14:29:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:30:29,912 - INFO - 127.0.0.1 - - [13/Nov/2024 14:30:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:31:29,008 - INFO - 127.0.0.1 - - [13/Nov/2024 14:31:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:32:29,481 - INFO - 127.0.0.1 - - [13/Nov/2024 14:32:29] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:33:30,329 - INFO - 127.0.0.1 - - [13/Nov/2024 14:33:30] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:34:31,350 - INFO - 127.0.0.1 - - [13/Nov/2024 14:34:31] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:34:36,712 - INFO - 127.0.0.1 - - [13/Nov/2024 14:34:36] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:34:46,474 - INFO -  * Detected change in 'c:\\Users\\Techsupport\\GreenMax-1\\app\\services\\energy_monitor.py', reloading
+2024-11-13 14:34:46,769 - INFO -  * Restarting with stat
+2024-11-13 14:34:48,163 - INFO - Firebase initialized successfully
+2024-11-13 14:34:48,164 - INFO - Gemini AI initialized successfully
+2024-11-13 14:34:48,171 - INFO - Database tables created successfully
+2024-11-13 14:34:49,376 - WARNING -  * Debugger is active!
+2024-11-13 14:34:49,382 - INFO -  * Debugger PIN: 673-864-907
+2024-11-13 14:35:25,160 - INFO - 127.0.0.1 - - [13/Nov/2024 14:35:25] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:35:25,174 - INFO - 127.0.0.1 - - [13/Nov/2024 14:35:25] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:36:26,158 - INFO - 127.0.0.1 - - [13/Nov/2024 14:36:26] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:36:26,166 - INFO - 127.0.0.1 - - [13/Nov/2024 14:36:26] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:37:27,152 - INFO - 127.0.0.1 - - [13/Nov/2024 14:37:27] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:37:27,156 - INFO - 127.0.0.1 - - [13/Nov/2024 14:37:27] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:38:28,150 - INFO - 127.0.0.1 - - [13/Nov/2024 14:38:28] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:38:28,154 - INFO - 127.0.0.1 - - [13/Nov/2024 14:38:28] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:39:29,150 - INFO - 127.0.0.1 - - [13/Nov/2024 14:39:29] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:39:29,155 - INFO - 127.0.0.1 - - [13/Nov/2024 14:39:29] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:40:30,159 - INFO - 127.0.0.1 - - [13/Nov/2024 14:40:30] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:40:30,164 - INFO - 127.0.0.1 - - [13/Nov/2024 14:40:30] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:41:31,146 - INFO - 127.0.0.1 - - [13/Nov/2024 14:41:31] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:41:31,149 - INFO - 127.0.0.1 - - [13/Nov/2024 14:41:31] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:42:32,147 - INFO - 127.0.0.1 - - [13/Nov/2024 14:42:32] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:42:32,153 - INFO - 127.0.0.1 - - [13/Nov/2024 14:42:32] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:43:33,153 - INFO - 127.0.0.1 - - [13/Nov/2024 14:43:33] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:43:33,158 - INFO - 127.0.0.1 - - [13/Nov/2024 14:43:33] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:44:34,154 - INFO - 127.0.0.1 - - [13/Nov/2024 14:44:34] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:44:34,160 - INFO - 127.0.0.1 - - [13/Nov/2024 14:44:34] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:45:35,154 - INFO - 127.0.0.1 - - [13/Nov/2024 14:45:35] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:45:35,162 - INFO - 127.0.0.1 - - [13/Nov/2024 14:45:35] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:46:36,144 - INFO - 127.0.0.1 - - [13/Nov/2024 14:46:36] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:46:36,148 - INFO - 127.0.0.1 - - [13/Nov/2024 14:46:36] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:46:43,023 - INFO -  * Detected change in 'c:\\Users\\Techsupport\\GreenMax-1\\app\\routes.py', reloading
+2024-11-13 14:46:43,316 - INFO -  * Restarting with stat
+2024-11-13 14:46:44,319 - INFO - Firebase initialized successfully
+2024-11-13 14:46:44,320 - INFO - Gemini AI initialized successfully
+2024-11-13 14:46:44,326 - INFO - Database tables created successfully
+2024-11-13 14:46:49,644 - INFO - Firebase initialized successfully
+2024-11-13 14:46:49,645 - INFO - Gemini AI initialized successfully
+2024-11-13 14:46:49,650 - INFO - Database tables created successfully
+2024-11-13 14:46:56,688 - INFO - Firebase initialized successfully
+2024-11-13 14:46:56,688 - INFO - Gemini AI initialized successfully
+2024-11-13 14:46:56,694 - INFO - Database tables created successfully
+2024-11-13 14:54:39,549 - INFO - Firebase initialized successfully
+2024-11-13 14:54:39,550 - INFO - Gemini AI initialized successfully
+2024-11-13 14:54:39,560 - INFO - Database tables created successfully
+2024-11-13 14:56:57,005 - INFO - Firebase initialized successfully
+2024-11-13 14:56:57,774 - INFO - Gemini AI initialized successfully
+2024-11-13 14:56:57,779 - INFO - Database tables created successfully
+2024-11-13 14:56:57,801 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-13 14:56:57,801 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-13 14:56:57,808 - INFO -  * Restarting with stat
+2024-11-13 14:56:58,687 - INFO - Firebase initialized successfully
+2024-11-13 14:56:59,394 - INFO - Gemini AI initialized successfully
+2024-11-13 14:56:59,399 - INFO - Database tables created successfully
+2024-11-13 14:56:59,409 - WARNING -  * Debugger is active!
+2024-11-13 14:56:59,414 - INFO -  * Debugger PIN: 673-864-907
+2024-11-13 14:57:04,419 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:04] "GET / HTTP/1.1" 200 -
+2024-11-13 14:57:04,546 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:04] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 14:57:04,547 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 14:57:04,548 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:04] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 14:57:04,555 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:04] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 14:57:07,501 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:07] "GET /auth/register HTTP/1.1" 200 -
+2024-11-13 14:57:07,523 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:07] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 14:57:07,525 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:07] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 14:57:28,161 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:28] "[32mGET /api/dashboard-data?range=day HTTP/1.1[0m" 302 -
+2024-11-13 14:57:28,170 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:28] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:57:49,633 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:49] "POST /auth/register HTTP/1.1" 200 -
+2024-11-13 14:57:49,655 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:49] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 14:57:49,655 - INFO - 127.0.0.1 - - [13/Nov/2024 14:57:49] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 14:58:07,992 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:07] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 14:58:08,010 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:08] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 14:58:08,011 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:08] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 14:58:11,071 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:11] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-11-13 14:58:18,404 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:18] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 14:58:18,435 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:18] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 14:58:18,436 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:18] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2024-11-13 14:58:23,059 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:23] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 14:58:33,377 - INFO - 127.0.0.1 - - [13/Nov/2024 14:58:33] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 15:33:01,610 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:01] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 15:33:06,946 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:06] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 15:33:10,596 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:10] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 15:33:14,627 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:14] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 15:33:18,461 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:18] "GET /api/dashboard-data?range=month HTTP/1.1" 200 -
+2024-11-13 15:33:23,707 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:23] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 15:33:36,095 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:36] "GET / HTTP/1.1" 200 -
+2024-11-13 15:33:36,127 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 15:33:36,131 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:36] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 15:33:36,132 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:36] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 15:33:36,139 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:36] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 15:33:51,455 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:51] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 15:33:55,024 - INFO -  * Detected change in 'c:\\Users\\Techsupport\\GreenMax-1\\app\\services\\auth.py', reloading
+2024-11-13 15:33:55,306 - INFO -  * Restarting with stat

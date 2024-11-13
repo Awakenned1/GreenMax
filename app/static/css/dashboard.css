@@ -493,6 +493,31 @@ h2 {
     background-color: var(--secondary-color);
 }
 
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1.5rem; /* Adjust size as needed */
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link i {
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover i {
+    transform: translateY(-2px);
+}
+
+
 /* Modal Styles */
 .modal {
     display: none;

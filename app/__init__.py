@@ -1,8 +1,9 @@
 import logging
+import os
+from datetime import timedelta
+
 from flask import Flask, render_template
 from flask_wtf.csrf import CSRFProtect
-from datetime import timedelta
-import os
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import firebase_admin
@@ -17,6 +18,11 @@ load_dotenv()
 db = SQLAlchemy()
 login_manager = LoginManager()
 csrf = CSRFProtect()
+
+
+# Initialize FCM Manager here
+from .services.fcm_service import FCMManager
+fcm_manager = FCMManager()  # Create instance here
 
 # Configure logging
 logging.basicConfig(
@@ -44,7 +50,29 @@ def init_gemini():
         logger.error(f"Gemini AI initialization error: {e}")
         return None
 
+def init_firebase():
+    """Initialize Firebase"""
+    try:
+        if not firebase_admin._apps:
+            cred_path = os.getenv('FIREBASE_CREDENTIALS_PATH', 'Service-key.json')
+            if not os.path.exists(cred_path):
+                raise FileNotFoundError(f"Firebase credentials file not found: {cred_path}")
+            
+            cred = credentials.Certificate(cred_path)
+            firebase_admin.initialize_app(cred, {
+                'databaseURL': os.getenv('FIREBASE_DATABASE_URL')
+            })
+            logger.info("Firebase initialized successfully")
+            return True
+    except Exception as e:
+        logger.error(f"Firebase initialization error: {e}")
+        return False
+
 def create_app():
+    # Initialize Firebase first
+    init_firebase()
+    
+    # Create Flask app
     app = Flask(__name__)
     
     # Configure app
@@ -55,51 +83,37 @@ def create_app():
         FIREBASE_DATABASE_URL=os.getenv('FIREBASE_DATABASE_URL'),
         SQLALCHEMY_DATABASE_URI=os.getenv('DATABASE_URL', 'sqlite:///greenmax.db'),
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
-        MAX_CONTENT_LENGTH=16 * 1024 * 1024,  # 16MB max file size
+        MAX_CONTENT_LENGTH=16 * 1024 * 1024,
         TEMPLATES_AUTO_RELOAD=True,
-        DEBUG=os.getenv('FLASK_ENV') == 'development'
+        DEBUG=os.getenv('FLASK_ENV') == 'development',
+        FCM_API_KEY=os.getenv('FCM_API_KEY')
     )
     
     # Initialize extensions
-    csrf.init_app(app)
     db.init_app(app)
+    csrf.init_app(app)
     login_manager.init_app(app)
+    
+    # Configure login manager
     login_manager.login_view = 'auth.login'
     login_manager.login_message = 'Please log in to access this page.'
     login_manager.login_message_category = 'info'
     
-    # Initialize Firebase
-    try:
-        if not firebase_admin._apps:
-            cred_path = os.getenv('FIREBASE_CREDENTIALS_PATH', 'Service-key.json')
-            if not os.path.exists(cred_path):
-                raise FileNotFoundError(f"Firebase credentials file not found: {cred_path}")
-            
-            cred = credentials.Certificate(cred_path)
-            firebase_admin.initialize_app(cred, {
-                'databaseURL': app.config['FIREBASE_DATABASE_URL']
-            })
-            logger.info("Firebase initialized successfully")
-    except Exception as e:
-        logger.error(f"Firebase initialization error: {e}")
-        if app.config['DEBUG']:
-            raise
-    
-    # Initialize Gemini AI
-    app.config['GEMINI_MODEL'] = init_gemini()
-
-    # Import models
     with app.app_context():
+        # Import services
+        from .services.energy_monitor import EnergyMonitoringSystem
+        from .services.fcm_service import FCMManager
+        
+        # Initialize services
+        app.energy_monitor = EnergyMonitoringSystem()
+        app.fcm_manager = FCMManager()
+        
+        # Initialize Gemini AI
+        app.config['GEMINI_MODEL'] = init_gemini()
+        
+        # Import models
         from .models import User
         
-        @login_manager.user_loader
-        def load_user(user_id):
-            try:
-                return User.query.get(int(user_id))
-            except Exception as e:
-                logger.error(f"Error loading user: {e}")
-                return None
-
         # Create database tables
         try:
             db.create_all()
@@ -108,14 +122,23 @@ def create_app():
             logger.error(f"Database initialization error: {e}")
             if app.config['DEBUG']:
                 raise
-
-    # Register blueprints
-    from .routes import main_bp
-    from .services.auth import auth_bp
+        
+        # Setup user loader
+        @login_manager.user_loader
+        def load_user(user_id):
+            try:
+                return User.query.get(int(user_id))
+            except Exception as e:
+                logger.error(f"Error loading user: {e}")
+                return None
+        
+        # Register blueprints
+        from .routes import main_bp
+        from .services.auth import auth_bp
+        
+        app.register_blueprint(main_bp)
+        app.register_blueprint(auth_bp, url_prefix='/auth')
     
-    app.register_blueprint(main_bp)
-    app.register_blueprint(auth_bp, url_prefix='/auth')
-
     # Error handlers
     @app.errorhandler(404)
     def not_found_error(error):

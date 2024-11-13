@@ -15,9 +15,14 @@
             <span>GreenMax</span>
         </div>
         <div class="nav-links">
-            <a href="{{ url_for('main.home') }}">Home</a>
-            <a href="{{ url_for('auth.logout') }}">Logout</a>
+            <a href="{{ url_for('main.home') }}" class="nav-link" title="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="{{ url_for('auth.logout') }}" class="nav-link" title="Logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
         </div>
+        
     </nav>
 
     <div class="dashboard">

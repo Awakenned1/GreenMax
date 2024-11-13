@@ -49,6 +49,16 @@ def register():
 
     return render_template('register.html', form=form)
 
+# When a user logs in or updates their token
+def update_fcm_token(self, user_id, token):
+    """Update user's FCM token in Firebase."""
+    try:
+        self.db.reference(f'users/{user_id}/fcm_token').set(token)
+        return True
+    except Exception as e:
+        print(f"Error updating FCM token: {e}")
+        return False
+
 @auth_bp.route('/logout')
 def logout():
     session.clear()

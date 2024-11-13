@@ -285,3 +285,30 @@ class DashboardManager {
 document.addEventListener('DOMContentLoaded', () => {
     window.dashboardManager = new DashboardManager();
 });
+// Request notification permission and get FCM token
+async function initializeFCM() {
+    try {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+            const messaging = firebase.messaging();
+            const token = await messaging.getToken({
+                vapidKey: 'YOUR_VAPID_KEY'
+            });
+            
+            // Send token to server
+            await fetch('/update-fcm-token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ token: token })
+            });
+        }
+    } catch (error) {
+        console.error('FCM initialization error:', error);
+    }
+}
+
+// Initialize FCM when page loads
+document.addEventListener('DOMContentLoaded', initializeFCM);
