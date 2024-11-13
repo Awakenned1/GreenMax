@@ -1,45 +1,53 @@
-runtime: python39
+runtime: python310
 entrypoint: gunicorn -b :$PORT run:app
 
 env: flex
 service: greenmax
 
+runtime_config:
+  python_version: "3.10"
+
 env_variables:
- # Flask Configuration
-FLASK_SECRET_KEY=your-secret-key
-GOOGLE_API_KEY=AIzaSyCyt-YW_Xr6aorCDT20yQ4UZe8LmaKFPBc
-MODEL_PATH=models/energy_model
-SCALER_PATH=models/scaler.pkl
-# Firebase Configuration
-FIREBASE_API_KEY=AIzaSyDxjlmb5VrMdkfCd1J5U8F4J2dyvQmy5xc
-FIREBASE_AUTH_DOMAIN=nifty-state-440816-u2.firebaseapp.com
-FIREBASE_PROJECT_ID=nifty-state-440816-u2
-FIREBASE_STORAGE_BUCKET=nifty-state-440816-u2.firebasestorage.app
-FIREBASE_MESSAGING_SENDER_ID=526899037573
-FIREBASE_APP_ID=1:526899037573:web:58bc441322a5ab8d4b70ec
-FIREBASE_DATABASE_URL=https://nifty-state-440816-u2-default-rtdb.firebaseio.com
-FIREBASE_CREDENTIALS_PATH=Service-key.json
+  FLASK_SECRET_KEY: "your-secret-key"
+  GOOGLE_API_KEY: "AIzaSyCyt-YW_Xr6aorCDT20yQ4UZe8LmaKFPBc"
+  MODEL_PATH: "models/energy_model"
+  SCALER_PATH: "models/scaler.pkl"
+  FIREBASE_API_KEY: "AIzaSyDxjlmb5VrMdkfCd1J5U8F4J2dyvQmy5xc"
+  FIREBASE_AUTH_DOMAIN: "nifty-state-440816-u2.firebaseapp.com"
+  FIREBASE_PROJECT_ID: "nifty-state-440816-u2"
+  FIREBASE_STORAGE_BUCKET: "nifty-state-440816-u2.firebasestorage.app"
+  FIREBASE_MESSAGING_SENDER_ID: "526899037573"
+  FIREBASE_APP_ID: "1:526899037573:web:58bc441322a5ab8d4b70ec"
+  FIREBASE_DATABASE_URL: "https://nifty-state-440816-u2-default-rtdb.firebaseio.com"
+  FIREBASE_CREDENTIALS_PATH: "Service-key.json"
+  FCM_API_KEY: "BCO7zZWL7m-hWCjSE03JAwggHkYwoKy_HdZhXFF_twY9VxuzkS57T6zxow9IkgZs2Tc0AMxrOpNi_SIXohXhL7k"
+  LOG_LEVEL: "INFO"
+  DATABASE_URL: "sqlite:///greenmax.db"
+  GEMINI_API_KEY: "AIzaSyCyt-YW_Xr6aorCDT20yQ4UZe8LmaKFPBc"
 
-
-FCM_API_KEY=BCO7zZWL7m-hWCjSE03JAwggHkYwoKy_HdZhXFF_twY9VxuzkS57T6zxow9IkgZs2Tc0AMxrOpNi_SIXohXhL7k
-
-# Logging
-LOG_LEVEL=INFO
-
-# Database
-DATABASE_URL=sqlite:///greenmax.db
-
-GEMINI_API_KEY=AIzaSyCyt-YW_Xr6aorCDT20yQ4UZe8LmaKFPBc
+network:
+  instance_tag: greenmax
+  name: default
 
 automatic_scaling:
-  target_cpu_utilization: 0.65
-  min_instances: 1
-  max_instances: 10
+  min_num_instances: 1
+  max_num_instances: 2
+  cool_down_period_sec: 180
+  cpu_utilization:
+    target_utilization: 0.6
+  target_concurrent_requests: 100
 
 resources:
   cpu: 1
   memory_gb: 2
   disk_size_gb: 10
 
-runtime_config:
-  python_version: 3.9
+handlers:
+  - url: /static
+    static_dir: static
+    secure: always
+  
+  - url: /.*
+    script: auto
+    secure: always
+    redirect_http_response_code: 301
