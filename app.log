@@ -479,3 +479,53 @@
 2024-11-13 15:33:51,455 - INFO - 127.0.0.1 - - [13/Nov/2024 15:33:51] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
 2024-11-13 15:33:55,024 - INFO -  * Detected change in 'c:\\Users\\Techsupport\\GreenMax-1\\app\\services\\auth.py', reloading
 2024-11-13 15:33:55,306 - INFO -  * Restarting with stat
+2024-11-13 15:33:56,604 - INFO - Firebase initialized successfully
+2024-11-13 15:33:57,750 - INFO - Gemini AI initialized successfully
+2024-11-13 15:33:57,789 - INFO - Database tables created successfully
+2024-11-13 15:33:57,807 - WARNING -  * Debugger is active!
+2024-11-13 15:33:57,811 - INFO -  * Debugger PIN: 673-864-907
+2024-11-13 16:52:29,003 - INFO - Firebase initialized successfully
+2024-11-13 16:52:30,833 - INFO - Gemini AI initialized successfully
+2024-11-13 16:52:30,871 - INFO - Database tables created successfully
+2024-11-13 16:52:30,898 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-13 16:52:30,898 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-13 16:52:30,900 - INFO -  * Restarting with stat
+2024-11-13 16:52:31,810 - INFO - Firebase initialized successfully
+2024-11-13 16:52:32,604 - INFO - Gemini AI initialized successfully
+2024-11-13 16:52:32,637 - INFO - Database tables created successfully
+2024-11-13 16:52:32,649 - WARNING -  * Debugger is active!
+2024-11-13 16:52:32,653 - INFO -  * Debugger PIN: 673-864-907
+2024-11-13 16:53:49,108 - INFO - 127.0.0.1 - - [13/Nov/2024 16:53:49] "GET / HTTP/1.1" 200 -
+2024-11-13 16:53:50,093 - INFO - 127.0.0.1 - - [13/Nov/2024 16:53:50] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 16:53:50,098 - INFO - 127.0.0.1 - - [13/Nov/2024 16:53:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 16:53:50,099 - INFO - 127.0.0.1 - - [13/Nov/2024 16:53:50] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 16:53:50,107 - INFO - 127.0.0.1 - - [13/Nov/2024 16:53:50] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 16:53:50,215 - WARNING - 404 error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-11-13 16:53:50,217 - INFO - 127.0.0.1 - - [13/Nov/2024 16:53:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-11-13 16:53:59,726 - INFO - 127.0.0.1 - - [13/Nov/2024 16:53:59] "GET /privacy HTTP/1.1" 200 -
+2024-11-13 16:53:59,753 - INFO - 127.0.0.1 - - [13/Nov/2024 16:53:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 16:54:07,685 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:07] "GET / HTTP/1.1" 200 -
+2024-11-13 16:54:07,717 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 16:54:07,718 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:07] "[36mGET /static/images/sustainability.jpg HTTP/1.1[0m" 304 -
+2024-11-13 16:54:07,721 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:07] "[36mGET /static/images/community.jpg HTTP/1.1[0m" 304 -
+2024-11-13 16:54:07,727 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:07] "[36mGET /static/images/girl.png HTTP/1.1[0m" 304 -
+2024-11-13 16:54:09,679 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:09] "GET /privacy HTTP/1.1" 200 -
+2024-11-13 16:54:09,710 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2024-11-13 16:54:10,721 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:10] "GET /auth/login HTTP/1.1" 200 -
+2024-11-13 16:54:10,750 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:10] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2024-11-13 16:54:10,751 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:10] "[36mGET /static/css/auth.css HTTP/1.1[0m" 304 -
+2024-11-13 16:54:15,031 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:15] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2024-11-13 16:54:22,352 - ERROR - Dashboard error: (sqlite3.OperationalError) no such column: users.email
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.created_at AS users_created_at, users.last_login AS users_last_login, users.is_active AS users_is_active, users.fcm_token AS users_fcm_token, users.notification_preferences AS users_notification_preferences, users.energy_settings AS users_energy_settings 
+FROM users 
+WHERE users.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-13 16:54:22,364 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:22] "GET /dashboard HTTP/1.1" 200 -
+2024-11-13 16:54:22,402 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:22] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2024-11-13 16:54:22,404 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:22] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+2024-11-13 16:54:26,600 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:26] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 16:54:30,279 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:30] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 16:54:33,988 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:33] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
+2024-11-13 16:54:40,722 - INFO - 127.0.0.1 - - [13/Nov/2024 16:54:40] "GET /api/dashboard-data?range=day HTTP/1.1" 200 -
