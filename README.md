@@ -99,7 +99,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 Your Name - nnkosinam@gmail.com
-Project Link: [https://github.com/yourusername/GreenMax-1](https://github.com/yourusername/GreenMax-1)
+Project Link: [https://github.com/yourusername/GreenMax-1](https://github.com/Awakenned1/GreenMax-1)
 
 ## Acknowledgments
 - Google Cloud Platform
@@ -107,3 +107,25 @@ Project Link: [https://github.com/yourusername/GreenMax-1](https://github.com/yo
 - TensorFlow
 - Flask Framework
 - Chart.js for visualizations
+- 
+Google Cloud Platform (GCP):
+App Engine for hosting
+Cloud Storage for static files
+Cloud Build for deployment
+Cloud Logging for monitoring
+Firebase Services:
+Firebase Authentication
+Firebase Realtime Database
+Firebase Cloud Messaging (FCM)
+Firebase Storage
+AI/ML Services:
+Google Gemini AI API
+Cloud Functions (optional)
+Additional Services:
+Cloud Secret Manager
+Cloud Monitoring
+Cloud IAM for access control
+Development Tools:
+Google Cloud SDK
+Firebase CLI
+Cloud Shell
