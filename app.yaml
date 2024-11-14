@@ -8,22 +8,7 @@ runtime_config:
   python_version: "3.10"
 
 env_variables:
-  FLASK_SECRET_KEY: "your-secret-key"
-  GOOGLE_API_KEY: "AIzaSyCyt-YW_Xr6aorCDT20yQ4UZe8LmaKFPBc"
-  MODEL_PATH: "models/energy_model"
-  SCALER_PATH: "models/scaler.pkl"
-  FIREBASE_API_KEY: "AIzaSyDxjlmb5VrMdkfCd1J5U8F4J2dyvQmy5xc"
-  FIREBASE_AUTH_DOMAIN: "nifty-state-440816-u2.firebaseapp.com"
-  FIREBASE_PROJECT_ID: "nifty-state-440816-u2"
-  FIREBASE_STORAGE_BUCKET: "nifty-state-440816-u2.firebasestorage.app"
-  FIREBASE_MESSAGING_SENDER_ID: "526899037573"
-  FIREBASE_APP_ID: "1:526899037573:web:58bc441322a5ab8d4b70ec"
-  FIREBASE_DATABASE_URL: "https://nifty-state-440816-u2-default-rtdb.firebaseio.com"
-  FIREBASE_CREDENTIALS_PATH: "Service-key.json"
-  FCM_API_KEY: "BCO7zZWL7m-hWCjSE03JAwggHkYwoKy_HdZhXFF_twY9VxuzkS57T6zxow9IkgZs2Tc0AMxrOpNi_SIXohXhL7k"
-  LOG_LEVEL: "INFO"
-  DATABASE_URL: "sqlite:///greenmax.db"
-  GEMINI_API_KEY: "AIzaSyCyt-YW_Xr6aorCDT20yQ4UZe8LmaKFPBc"
+ 
 
 network:
   instance_tag: greenmax
